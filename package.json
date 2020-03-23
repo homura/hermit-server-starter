@@ -1,0 +1,31 @@
+{
+  "name": "hermit-server-starter",
+  "version": "0.0.1",
+  "description": "An API server for Muta",
+  "scripts": {
+    "start": "node dist/server",
+    "sync": "node dist/sync",
+    "clean": "rm -rf lib",
+    "build": "npm -s run clean && npm -s run generate && tsc --skipLibCheck",
+    "generate": "dotenv -- npm -s run generate:nexus",
+    "generate:nexus": "ts-node  --transpile-only src/server/make-schema.ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "dev:server": "ts-node  --transpile-only src/server",
+    "dev:sync": "cross-env ts-node --transpile-only src/sync"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@types/body-parser": "^1.19.0",
+    "@types/cors": "^2.8.6",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "hermit-purple-server": "^0.3.0-alpha.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "dotenv-cli": "^3.1.0",
+    "schemats": "^3.0.3",
+    "typescript": "^3.8.3"
+  }
+}
