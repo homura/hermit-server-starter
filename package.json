@@ -8,11 +8,11 @@
     "clean": "rm -rf lib",
     "build": "npm -s run clean && npm -s run generate && tsc --skipLibCheck",
     "generate": "dotenv -- npm -s run generate:nexus",
-    "generate:nexus": "ts-node  --transpile-only src/server/make-schema.ts",
+    "generate:nexus": "ts-node-dev  --transpileOnly src/server/make-schema.ts",
     "test": "jest",
     "test:watch": "jest --watch",
-    "dev:server": "ts-node  --transpile-only src/server",
-    "dev:sync": "cross-env ts-node --transpile-only src/sync"
+    "dev:server": "ts-node-dev --no-notify --respawn --transpileOnly src/server",
+    "dev:sync": "cross-env ts-node-dev --transpileOnly src/sync"
   },
   "license": "MIT",
   "dependencies": {
@@ -26,6 +26,7 @@
     "cross-env": "^7.0.2",
     "dotenv-cli": "^3.1.0",
     "schemats": "^3.0.3",
+    "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.8.3"
   }
 }
